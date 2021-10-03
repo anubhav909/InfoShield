@@ -1,0 +1,77 @@
+<html>
+  <head>
+     <title>INFOSHIELD</title>
+     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+     <link rel="stylesheet" href="./static/css/mainPage.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body id="grad">
+  
+    <div class="container" ><br>
+      <center>
+
+        <img id="image_canv" src="./static/img/new.PNG" 
+            style="transform:rotate(0deg); width:200px;height:150px;"
+            >
+      </center>
+    </div>
+    
+
+    <div class=container"><br>
+      <div class="row align-items-center justify-content-center">
+        <div id = "myForm" class="col-md-4">
+            <form  action="" method="post" role="form">
+              {{ form.csrf }}
+              <div class="form-group">
+                <label for="name">Message:</label>
+                <input type="text" class="form-control" id="text" name="message" placeholder="Please Enter Your Message">
+                <label for="password">Passcode:</label>
+                <input type="password" class="form-control" id="password" name="passcode" placeholder="Enter a key in numbers">
+                  <br>
+                 <center>
+
+                <img id="image_canv" src="./static/img/mail.jpeg" 
+                 style="transform:rotate*(45deg); width:200px;height:200px;">
+                </center>
+                <label for="name">Sender E-Mail:</label>
+                <input type="text" class="form-control" id="text" name="sender" placeholder="Please Enter Your Mail-ID">
+                  <br>
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Please Enter Your Password">
+                  <br>
+                <label for="name">Reciever E-Mail:</label>
+                <input type="text" class="form-control" id="text" name="reciever" placeholder="Please Enter Reciepent Mail-ID">
+                  <br>
+              </div>
+              <br>													   
+              <center>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </center>
+            </form>
+            <br>
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+              {% for message in messages %}
+                  {% if "Error" not in message[1]: %}
+                      <div class="alert alert-info">
+                      <strong>Success! </strong> {{ message[1] }}
+                      </div>
+                  {% endif %}
+                  {% if "Error" in message[1]: %}
+                      <div class="alert alert-danger">
+                      <strong>Error: </strong> {{ message[1] }}
+                      </div>
+                  {% endif %}
+              {% endfor %}
+                  {% endif %}
+              {% endwith %}
+        </div>
+      <br>
+      </div>
+    </div>
+  </body>
+</html>
+s
